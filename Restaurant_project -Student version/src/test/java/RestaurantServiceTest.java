@@ -1,7 +1,11 @@
 import org.junit.jupiter.api.*;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -75,4 +79,20 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+    //TDD for the method which calculates the sum of selected items selected passed to it.
+        //The method will return the string output with indicating the total amount.
+        //The method will take Item list as argument.
+        //Assuming that totalAmount method will only get the selected item list and returns the final message with total amount.
+    @Test
+    public void totalAmount_method_will_return_the_string_with_total_cost_of_the_items_passed(){
+        ArrayList<Item> itemsSelected = new ArrayList<>();
+        itemsSelected.add(new Item("Sweet corn soup",119));
+        itemsSelected.add(new Item("Vegetable lasagne", 269));
+        itemsSelected.add(new Item("Fruit juice",50));
+        String result = service.totalAmount(itemsSelected);
+        assertThat(result, equalTo("Your order will cost: $438"));
+
+    }
 }

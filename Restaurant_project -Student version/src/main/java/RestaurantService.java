@@ -41,4 +41,16 @@ public class RestaurantService {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    //The method will return the String needs to be displayed to user with total amount of items passed to it
+
+    public String totalAmount(ArrayList<Item> itemsSelected) {
+        String outputString = "Your order will cost: $";
+        int sum = 0;
+        for(Item item: itemsSelected){
+            sum += item.getPrice();
+        }
+        outputString += sum;
+        return  outputString;
+    }
 }
